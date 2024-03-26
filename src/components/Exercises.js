@@ -22,7 +22,7 @@ const Exercises = ({ setBodyPart, bodyPart }) => {
         <button className="dropbtn">Categories</button>
         <div className="dropdown-content">
           {bodyParts.map((item) => (
-            <p key={index}   onClick={() => setBodyPart(item)}>{item}</p>
+            <p key={item}   onClick={() => setBodyPart(item)}>{item}</p>
           ))}
         </div>
       </div>
