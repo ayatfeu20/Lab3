@@ -1,4 +1,4 @@
-// typings.js
+
 
 const Exercises = {
   bodyParts: [],

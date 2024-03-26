@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { exerciseOptions, fetchData } from "../utility/fetchData";
 
 const Exercises = ({ setBodyPart, bodyPart }) => {
+
   const [bodyParts, setBodyParts] = useState([]);
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -19,9 +20,9 @@ const Exercises = ({ setBodyPart, bodyPart }) => {
       <p className="exercise-text">Different BodyParts, Different Exercises</p>
       <div className="dropdown">
         <button className="dropbtn">Categories</button>
-        <div className="dropdown-content">
+        <div  className="dropdown-content">
           {bodyParts.map((item) => (
-            <p onClick={() => setBodyPart(item)}>{item}</p>
+            <p   onClick={() => setBodyPart(item)}>{item}</p>
           ))}
         </div>
       </div>

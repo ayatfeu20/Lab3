@@ -1,46 +1,48 @@
-import React from 'react';
-import Layout from '../../components/Layout';
-import ExerciseDetail from '../../components/ExerciseDetail';
-import { fetchData, exerciseOptions } from '../../utility/fetchData';
+import ExerciseDetail from "@/components/ExerciseDetail";
+import Youtube from "@/components/Youtube";
+import {
+  exerciseOptions,
+  fetchData,
+  youtubeOptions,
+} from "@/utility/fetchData";
+import React, { useEffect, useState } from "react";
 
-const ExerciseDetailPage = ({ exerciseDetail }) => {
+const ExercisePage = ({ exerciseDetail, youtubeDetail }) => {
   return (
-    <Layout>
+    <div>
       <ExerciseDetail exerciseDetail={exerciseDetail} />
-    </Layout>
+      <Youtube youtubeDetail={youtubeDetail} exerciseDetail={exerciseDetail} />
+    </div>
   );
 };
 
-export async function getStaticPaths() {
-  // Fetch exercise IDs
-  const exercisesData = await fetchData(
-    "https://exercisedb.p.rapidapi.com/exercises",
+export async function getStaticProps(context) {
+  const { params } = context;
+  const { id } = params;
+
+  // Define your client code here
+  const fetchDataClient = async (url, options) => {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+  };
+
+  const exerciseDetailData = await fetchDataClient(
+    `https://exercisedb.p.rapidapi.com/exercises/exercise/${id}`,
     exerciseOptions
   );
 
-  // Map exercise IDs to paths
-  const paths = exercisesData.map((exercise) => ({
-    params: { id: exercise.id.toString() }
-  }));
-
-  return {
-    paths,
-    fallback: false
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // Fetch exercise details by ID
-  const exerciseDetail = await fetchData(
-    `https://exercisedb.p.rapidapi.com/exercises/${params.id}`,
-    exerciseOptions
+  const youtubeDetailData = await fetchDataClient(
+    `https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetailData.name}`,
+    youtubeOptions
   );
 
   return {
     props: {
-      exerciseDetail
-    }
+      exerciseDetail: exerciseDetailData,
+      youtubeDetail: youtubeDetailData.contents,
+    },
   };
 }
 
-export default ExerciseDetailPage;
+export default ExercisePage;
