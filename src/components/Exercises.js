@@ -20,9 +20,9 @@ const Exercises = ({ setBodyPart, bodyPart }) => {
       <p className="exercise-text">Different BodyParts, Different Exercises</p>
       <div className="dropdown">
         <button className="dropbtn">Categories</button>
-        <div  className="dropdown-content">
+        <div className="dropdown-content">
           {bodyParts.map((item) => (
-            <p   onClick={() => setBodyPart(item)}>{item}</p>
+            <p key={index}   onClick={() => setBodyPart(item)}>{item}</p>
           ))}
         </div>
       </div>
