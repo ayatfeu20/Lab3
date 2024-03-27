@@ -1,6 +1,7 @@
 import React from "react";
 
 const Youtube = ({ youtubeDetail, exerciseDetail }) => {
+  
   return (
     <div>
       <p style={{ textTransform: 'capitalize', fontSize: '25px', textAlign: 'center' }}>

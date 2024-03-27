@@ -5,9 +5,6 @@ import Navbar from './Navbar';
 import Footer from '@/components/Footer'
 
 
-
-
-
 const Layout = ({ children }) => {
   
   const metadata = {
