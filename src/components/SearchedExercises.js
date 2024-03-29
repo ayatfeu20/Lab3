@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import ExerciseCard from "./ExerciseCard";
 import ExerciseDetail from "./ExerciseDetail";
-import { exerciseOptions, fetchData } from "@/utility/fetchData";
+import { exerciseOptions, fetchData } from "../utility/fetchData";
 
 const SearchedExercises = ({ exercises, bodyPart, setExercises }) => {
   useEffect(() => {
     const fetchExercisesData = async () => {
-      console.log(bodyPart);
+      
       let exercisesData = [];
 
       if (bodyPart === "all") {
@@ -22,7 +22,7 @@ const SearchedExercises = ({ exercises, bodyPart, setExercises }) => {
       }
 
       setExercises(exercisesData);
-      console.log(exercisesData);
+      
     };
     fetchExercisesData();
   }, [bodyPart]);

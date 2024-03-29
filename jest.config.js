@@ -196,6 +196,12 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
+  moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
+
+  // Add or modify configuration options here
+  // For example:
+  
 };
 
 module.exports = config;
