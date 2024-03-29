@@ -1,7 +1,10 @@
 import React from "react";
 
 const Youtube = ({ youtubeDetail, exerciseDetail }) => {
-  
+  if (!exerciseDetail) {
+    return <p>No exercise detail available.</p>;
+  }
+
   return (
     <div>
       <p style={{ textTransform: 'capitalize', fontSize: '25px', textAlign: 'center' }}>

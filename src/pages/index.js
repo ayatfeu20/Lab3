@@ -1,8 +1,9 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Exercises from '../components/Exercises';
 import SearchedExercises from '@/components/SearchedExercises';
+import Sidebar from '../components/SideBar';
 import { fetchData, exerciseOptions } from '../utility/fetchData';
 
 const Home = () => {
@@ -11,13 +12,19 @@ const Home = () => {
   return (
     <Layout>
       <Banner setExercises={setExercises} />
-      <Exercises bodyPart={bodyPart} setBodyPart={setBodyPart} />
-
-<SearchedExercises
-  exercises={exercises}
-  bodyPart={bodyPart}
-  setExercises={setExercises}
-/>
+      <div className="container">
+        <div className="main-content">
+          <Exercises bodyPart={bodyPart} setBodyPart={setBodyPart} />
+          <SearchedExercises
+            exercises={exercises}
+            bodyPart={bodyPart}
+            setExercises={setExercises}
+          />
+        </div>
+        <div className="sidebar-container">
+          <Sidebar />
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -43,6 +50,5 @@ export async function getStaticProps() {
     };
   }
 }
-
 
 export default Home;

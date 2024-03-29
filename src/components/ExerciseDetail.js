@@ -1,11 +1,13 @@
+// ExerciseDetail.js
+
 import React from "react";
 import Image from "next/image";
 
-
 const ExerciseDetail = ({ exerciseDetail }) => {
- 
-  const {  gifUrl, name} = exerciseDetail;
-  
+  if (!exerciseDetail) return null; 
+
+  const { gifUrl, name, instructions } = exerciseDetail;
+
   return (
     <div className="exercise-detail">
       <Image
@@ -18,14 +20,15 @@ const ExerciseDetail = ({ exerciseDetail }) => {
       <div className="exercise-detail-text">
         <p className="exercise-detail-name">{name}</p>
         <p style={{ textDecoration: 'underline' }}>Instruction</p>
-{exerciseDetail.instructions ? (
-  <p className="exercise-detail-description">
-    {exerciseDetail.instructions}
-  </p>
-) : (
-  <p className="exercise-detail-description">No instructions available.</p>
-)}
-
+        {instructions && instructions.length > 0 ? (
+          <ul className="exercise-detail-description">
+            {instructions.map((instruction, index) => (
+              <li key={index}>{instruction}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="exercise-detail-description">No instructions available.</p>
+        )}
       </div>
     </div>
   );

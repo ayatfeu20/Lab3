@@ -1,12 +1,12 @@
-// SideBar.js
 import React from 'react';
+import FitnessCalculator from './FitnessCalculator';
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
-    <aside>
-      {/* Sidebar content */}
-    </aside>
+    <div className="sidebar">
+      <FitnessCalculator />
+    </div>
   );
 };
 
-export default SideBar;
+export default Sidebar;
